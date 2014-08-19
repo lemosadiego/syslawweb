@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+<ui:composition template="/syslawtemplate.xhtml">
+	<ui:define name="content">
+	
+		<p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="PF('statusDialog').hide();"/>
+
+		<h:form id="formPrincipal">
+		
+			<p:growl id="mensagem" showDetail="true" sticky="true" showSummary="false"/>
+			
+			<p:toolbar style="text-align:center;position:relative;">
+				<p:toolbarGroup align="center">
+					<p:commandButton value="#{msg['lbl.gruposUsuarios.novo']}"
+						icon="ui-icon-document"
+						actionListener="#{grupoUsuarioMB.novo}" />
+					<p:commandButton
+						value="#{msg['lbl.gruposUsuarios.alterar']}"
+						icon="ui-icon-pencil"
+						actionListener="#{grupoUsuarioMB.carregarItemSelecionado}" />
+					<p:commandButton
+						value="#{msg['lbl.gruposUsuarios.excluir']}"
+						icon="ui-icon-trash"
+						actionListener="#{grupoUsuarioMB.excluir}"
+						update="mensagem,listaGrupos">
+						<p:confirm header=""
+							message="#{msg['lbl.gruposUsuarios.header.mensagem.exclusao']}"
+							icon="ui-icon-alert" />
+					</p:commandButton>
+				</p:toolbarGroup>
+			</p:toolbar>
+			
+			
+			<p:panel header="#{msg['lbl.cadastroGrupoUsuario.titulo']}">
+				<p:dataTable id="listaGrupos" var="grupo" value="#{grupoUsuarioMB.grupoUsuarioDataModel}" paginator="true"   
+				                selection="#{grupoUsuarioMB.grupoEscolhido}" rowkey="#{grupo.id}" selectionMode="single"  style="text-align:center;width:550px;position:relative;" >  
+				  
+				  		<p:ajax event="rowSelect" update=":#{p:component('formAlteracao')}" listener="#{grupoUsuarioMB.selecionarLinha}"  />
+			  
+				        <p:column headerText="#{msg['lbl.gruposUsuarios.header.descricao']}" filterBy="#{grupo.descricao}" style="width:50px;" >  
+				        	<h:outputText value="#{grupo.descricao}"/>
+				        </p:column>  
+				  
+				  </p:dataTable>
+			</p:panel>
+		</h:form>
+		
+		<p:dialog header="#{msg['lbl.gruposUsuarios.titulo.alteracao']}" widgetVar="grupoUsuarioDialogAlteracao" resizable="false"  width="280" showEffect="explode" hideEffect="clip">
+				<h:form id="formAlteracao">
+					<p:growl id="mensagemAlteracao" showDetail="true" sticky="true" showSummary="false"/>
+			        <h:panelGrid id="displayAlteracao" columns="2">            
+			            <h:outputText value="#{msg['lbl.gruposUsuarios.form.descricao']}" />  
+			            <h:inputText value="#{grupoUsuarioMB.descricao}" id="nomeGrupoAlteracao"/>
+			            
+			            
+			            <p:commandButton value="Salvar" icon="ui-icon-disk" actionListener="#{grupoUsuarioMB.alterar}" update=":#{p:component('formPrincipal')},:#{p:component('listaGrupos')}" />  
+			        	<h:outputLabel value=""/>
+			        </h:panelGrid> 
+			      </h:form>
+		</p:dialog>		
+		
+		
+		
+		<p:dialog header="#{msg['lbl.gruposUsuarios.titulo.cadastro']}" widgetVar="grupoUsuarioDialogInclusao" resizable="false"  width="350" height="250" showEffect="explode" hideEffect="clip">
+				<h:form id="formInclusao">
+					<p:growl id="mensagemInclusao" showDetail="true" sticky="true" showSummary="false"/>
+			        <h:panelGrid id="displayInclusao" columns="2">            
+			            <h:outputText value="#{msg['lbl.gruposUsuarios.form.descricao']}" />  
+			            <h:inputText value="#{grupoUsuarioMB.descricao}" id="nomeGrupoInclusao"/>
+			            
+			            <p:commandButton value="Salvar" icon="ui-icon-disk" actionListener="#{grupoUsuarioMB.incluir}" update=":#{p:component('mensagem')},:#{p:component('listaGrupos')}" />  
+			        	<h:outputLabel value=""/>
+			        </h:panelGrid> 
+			      </h:form>
+		</p:dialog>
+		
+		<p:confirmDialog global="true" showEffect="explode" hideEffect="clip">  
+			<table align="center">
+			      <tr>
+			      	<td>
+				        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+				        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>  
+	        		</td>
+	        	</tr>     
+	        </table>
+	    </p:confirmDialog>
+
+		
+</ui:define>
+</ui:composition>
+</html>
+
+

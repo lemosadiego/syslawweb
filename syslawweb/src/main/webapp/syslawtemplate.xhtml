@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
+<h:head>
+	<h:outputStylesheet library="temaOi" name="css/padrao.css"></h:outputStylesheet>
+	<h:outputStylesheet library="temaOi" name="css/default.css"></h:outputStylesheet>
+	<style type="text/css">
+			
+			
+			body {
+				scrollbar-arrow-color:#000000;
+				scrollbar-face-color:#CAE1FF;
+				scrollbar-track-color:#FFFFFF;
+			}
+			
+			/* Definindo cores intercaladas nas tabelas - Inicio */
+			.ui-datatable-odd td
+			{  
+            background-color:#CAE1FF;    
+        	} 
+  
+	        .ui-datatable-even td
+	        {  
+	            background-color:#XXXXXX;  
+	        } 
+ 
+        
+			.ui-datatable .ui-datatable-data .ui-state-highlight td 
+			{
+                 border-bottom: 1px solid #FFF68F;
+                 background-color:#FFF68F !important; 
+            }
+			/* Definindo cores intercaladas nas tabelas - Fim */
+		
+			.ui-selectoneradio label
+			{
+					width:60px;
+			}
+</style>
+	
+</h:head>
+
+<f:loadBundle basename="resources" var="msg"/>
+
+<body>
+
+<!-- <div class="header">
+        <ui:insert name="header">
+           <ui:include src="../layout/header.xhtml" />
+        </ui:insert>
+</div>	
+
+<div class="menu">
+        <ui:insert name="menu">
+           <ui:include src="../layout/menu.xhtml" />
+        </ui:insert>
+</div> -->
+
+<div class="content">
+       <ui:insert name="content"></ui:insert>
+       <p:dialog modal="true" widgetVar="statusDialog" header="Aguarde" draggable="false" closable="false" resizable="false">  
+    		<p:graphicImage color='RED' value="/resources/imagens/aguardando.gif" /> 
+		</p:dialog>
+</div>
+
+
+
+
+</body>
+</html> 
