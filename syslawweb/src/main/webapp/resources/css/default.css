@@ -1,0 +1,411 @@
+h3 {
+	color: red;
+	font-size: 16px;
+}
+
+body {
+	/*width: 780px;*/
+	padding: 0px;
+	margin: 0px;
+	color: #666666;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+}
+
+br {
+	clear: left;
+}
+
+.escondido {
+	display: none;
+}
+
+.image {
+	border-width: 0px 0px 0px 0px;
+	cursor: pointer;
+}
+
+.input_text {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	padding: 0px;
+	color: #666666;
+	background: #D3D8DC;
+	border: 1px solid #B7BCBF;
+	background-color: #FBFCEF;
+	margin: 2px;
+}
+
+.input_text_alta {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	padding: 0px;
+	color: #666666;
+	background: #D3D8DC;
+	border: 1px solid #B7BCBF;
+	background-color: #FBFCEF;
+	margin: 2px;
+	text-transform: uppercase;
+}
+
+select,textarea {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	padding: 0px;
+	color: #666666;
+	background: #D3D8DC;
+	border: 1px solid #B7BCBF;
+	background-color: #E2F1FE; /*#FBFCEF;*/
+	margin: 2px;
+}
+
+#tabela2 {
+	border: 2px solid #175C7D;
+	background-color: #C4DAEF;
+}
+
+caption {
+	float: left;
+	font-size: x-small;
+	font-style: normal;
+	font-weight: bold;
+	background-color: #F5E080;
+	text-align: center;
+	color: #666666;
+	padding: 2px;
+	border: 1px;
+	border-color: white;
+	border-bottom: 3px solid #ffffff;
+}
+
+thead {
+	font-size: x-small;
+	font-style: normal;
+	font-weight: normal;
+	background-color: #C4DAEF;
+	text-align: center;
+	color: #2E6BA9;
+}
+
+tfoot {
+	background-color: #BCD189;
+	font-size: 10px;
+	font-weight: bold;
+	color: black;
+	padding: 1px;
+}
+
+th {
+	font-family: verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;
+	padding: 3px;
+	background-color: #B5D3E7;
+	height: 18px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+tbody {
+	font-size: 10px;
+	font-style: normal;
+	font-weight: normal;
+	color: #2E6BA9;
+}
+
+.odd {
+	background-color: #F6FFFF;
+	font-family: verdana;
+	font-size: 11px;
+	border-top: 2px solid #ffffff;
+}
+
+.even {
+	background-color: #E4EDFC;
+	font-family: verdana;
+	font-size: 11px;
+	border-top: 2px solid #ffffff;
+}
+
+tr.par {
+	background-color: #EAF2F2;
+}
+
+tr.impar {
+	background-color: #FFFFFF;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid #B7BCBF;
+}
+
+h1 {
+	font-size: x-small;
+	font-style: normal;
+	font-weight: bold;
+	background-color: #BCD189;
+	text-align: center;
+	color: #284615;
+	width: 100%;
+	margin: 5px;
+}
+
+h2 {
+	font-size: small;
+	font-style: normal;
+	font-weight: bold;
+	text-align: right;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+label {
+	float: left;
+}
+
+img {
+	border: none;
+}
+
+#setas {
+	font-size: 120%;
+	float: right;
+	font-style: normal;
+	font-weight: bold;
+}
+
+#img_topo {
+	float: left;
+	width: 781px;
+	height: 49px;
+	background-image: url("../imagem/topo.gif");
+	background-repeat: no-repeat;
+}
+
+#corpo {
+	position: relative;
+	width: 780px;
+	height: 100%;
+	background-color: #FFFFFF;
+	padding: 5px;
+	align: center;
+}
+
+#corpo label {
+	padding-right: 5px;
+	padding-left: 20px;
+}
+
+#corpo_interno {
+	float: center;
+	width: 625px;
+	height: 90%;
+	background-color: white; --# FFFFFF;
+	padding: 5px;
+}
+
+#corpo_interno label {
+	padding-right: 5px;
+	padding-left: 20px;
+}
+
+#lateral {
+	float: left;
+	width: 150px;
+	height: 90%;
+	text-align: center;
+	padding-top: 3px;
+}
+
+#lateral_direita_pesquisa {
+	float: left;
+	width: 150px;
+	height: 100%;
+	background-color: #E7E8EE;
+	text-align: center;
+	display: none;
+	padding-top: 5px;
+	position: absolute;
+}
+
+#lateral_direita_pesquisa input {
+	width: 110px;
+}
+
+#lateral_direita input {
+	width: 110px;
+}
+
+#lateral_direita_pesquisa select {
+	width: 130px;
+}
+
+#lateral_direita select {
+	width: 130px;
+}
+
+#relatorio_pesquisa select {
+	width: 130px;
+}
+
+#relatorio_pesquisa {
+	position: relative;
+	float: center;
+	width: 625px;
+	height: 50px;
+	background-color: #E7E8EE;
+}
+
+#relatorio_corpo {
+	float: center;
+	width: 625px;
+	height: 72%;
+	background-color: #FFFFFF;
+	padding: 5px;
+}
+
+.fundoBotao {
+	border-left: 1px solid #9BBBCE;
+	border-right: 1px solid #9BBBCE;
+	background-color: #E4EDFC;
+	text-align: center;
+}
+
+.botao {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 85%;
+	font-weight: bold;
+	color: #363636;
+	padding: 1px;
+	background: #BED6F8;
+	border-top: 2px solid #BED6F8;
+	border-left: 2px solid #BED6F8;
+	border-right: 2px solid #BED6F8;
+	border-bottom: 2px solid #BED6F8;
+	width: 90px;
+	margin: 3px;
+	cursor: hand;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.botao_alteracao_manual {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 85%;
+	font-weight: bold;
+	color: #1E5C00;
+	padding: 1px;
+	background: #E7DD2F;
+	border-top: 2px solid #E1E631;
+	border-left: 2px solid #E1E631;
+	border-right: 2px solid #666666;
+	border-bottom: 2px solid #666666;
+	margin: 3px;
+	cursor: hand;
+	width: 120px;
+}
+
+.tabela_interna {
+	float: left;
+	width: 780px;
+	height: 100%;
+	background-color: #FFFFFF;
+	padding: 5px;
+}
+
+.input_botao_ok {
+	width: 25px;
+	height: 17px;
+}
+
+.input_data {
+	width: 100px;
+}
+
+.tx {
+	font-weight: bold;
+	font-size: 10px;
+	color: #003366;
+	font-family: Arial, Helvetica, Sans-Serif
+}
+
+.cxtexto {
+	border-right: #000000 1px solid;
+	border-top: #000000 1px solid;
+	font-weight: bold;
+	font-size: 10px;
+	border-left: #000000 1px solid;
+	color: #000000;
+	border-bottom: #000000 1px solid;
+	font-family: Arial, Helvetica, Sans-Serif
+}
+
+.tabela_cadastro {
+	background-color: #FBFBF4;
+	text-align: left;
+	color: #284615;
+}
+
+.total_tabela {
+	font-size: 11px;
+	font-style: normal;
+	font-weight: bold;
+	font-family: Verdana;
+	background-color: #BCD189;
+	color: #284615;
+	padding: 1px;
+}
+
+.relatorio_conteudo_tabela {
+	font-size: 11px;
+	font-family: Verdana;
+	color: #284615;
+	padding-top: 3px;
+}
+
+.relatorio_total_tabela {
+	font-size: 11px;
+	font-style: normal;
+	font-weight: normal;
+	font-family: Verdana;
+	background-color: #BCD189;
+	text-align: left;
+	color: #284615;
+}
+
+a.link_pesquisa {
+	font-style: normal;
+	font-weight: bold;
+	font-family: arial;
+	color: #284615;
+	text-decoration: none;
+	size: 6px;
+}
+
+#select_responsavel {
+	width: 140px;
+}
+
+tr.mailing {
+	font-size: 11px;
+	font-style: normal;
+	font-weight: normal;
+	background-color: #E1EA99;
+	text-align: center;
+	color: black;
+	padding: 1px;
+}
+
+.texto_erro {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 11px;
+	color: red;
+}
+
+.semBorda tr,.semBorda td {
+	border: none !important;
+}

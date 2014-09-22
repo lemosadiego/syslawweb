@@ -1,0 +1,367 @@
+/* Padrões genéricos*/
+
+A {
+	color:#28567A;
+	text-decoration: none
+}
+
+A:hover {
+	color: #95B6E2;
+}
+
+body {
+	margin:0px;
+}
+
+/* Padrões usandos no menu principal */
+
+.topo {
+	visibility: visible;
+	display: block; 
+	position: relative; 
+	margin: 0px; 
+	top: 0px; 
+	left: 0px; 
+	height: 78px;
+}
+
+.topo table {
+	position: relative;
+	width: 100%;
+	padding: 0px;
+	left: 0px;
+	top: 0px;	
+}
+
+.menu {
+	position: relative;
+	margin-top:10px;	
+	left: 10px;
+	width: 98%;
+	z-index: 1;
+}
+
+.content {
+	position: relative;
+	margin-top:10px;
+}
+
+
+.menuLogoAplicacao {
+	width:10px; 
+	vertical-align:text-top; 
+	padding: 0px;
+	background-color: #B5D3E7;
+}
+
+.headerTitulo {
+	color:#FFF;
+	background-color:#746EA4;
+	font-size:12px; 
+	float:none; 
+	font-family:"Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;  
+	font-weight:bold; 
+	text-decoration: none;
+}
+
+.menuTitulo {
+	color:#175C7d;
+	background-color:#B5D3E7;
+	font-size:12px; 
+	float:none; 
+	padding:2px 8px; 
+	font-family:"Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;  
+	font-weight:bold; 
+	text-decoration: none;
+	border:solid 0.05em #61A0C6;	
+}
+.menuItem {
+	color:#28567A;
+	font-size:11px;
+	padding:2px 8px;
+	font-family:"Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+.sobreMenuItem {
+	border:solid 0.05em #61A0C6;
+	background-color:#D6E9F4;
+}
+
+/* Padrões usandos no header */
+.header {
+	background-color: rgb(116, 110, 164);/*746EA4*/
+ 	background: -moz-linear-gradient(top, #B5D3E7, #746EA4);
+	background: -webkit-gradient(linear, top, bottom, from(#B5D3E7), to(#746EA4));
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#FFB5D3E7', EndColorStr='#FF746EA4');
+}
+
+.headerBrtLogo {
+	color:#3F3F3F;
+	font:bold;
+	width:10%;
+	text-align:left;
+	margin:0px;
+}
+
+.headerLogOut {
+	width:90%;
+	text-align:right;  
+	vertical-align:bottom; 
+	padding-right:8px; 
+	padding-bottom:8px;
+	font-size:14px; 
+	font-weight:bold; 
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.headerLogOutLink {
+	color:#FFFFFF; 
+}
+
+.headerBottom {
+	background-color:#746EA4;
+	height:12px;
+}
+
+/* Padrões usandos no footer */
+
+.footerBottom {
+	background-color:#B5D3E7;
+	height:12px;
+}
+
+/* Padrões usados na listagem de conteudos */
+
+.tabelaConteudo {
+	width:60%;
+	padding:4em;
+	text-align:center;
+}
+
+.linhaConteudoTituloPrincipal {
+	height:100px;
+}
+
+.tabelaConteudoVazia {
+	text-align:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	height:50px;
+	color:#3F3F3F;
+}
+
+.tabelaConteudoTituloPrincipal {
+	font-weight:bold; 
+	font-size:20px; 
+	color: #161616; 
+	font-style:normal; 
+	font-family:Arial; 
+	text-align:right; 
+	vertical-align:center;
+}
+
+.tabelaConteudoTitulo {
+	font-weight:bold; 
+	font-size:11px;
+	color:black;
+	font-style:normal;
+	font-family:Arial;
+	background-color:#F5E080;
+	text-align:center;
+	border:thin solid grey; 
+}
+
+.tabelaResultadoConsultaTitulo {
+	background-color:#C4DAEF;
+	text-align:center;
+	font-weight:bold;
+	font-family:Arial;
+	font-size:11px;
+	color:#175C7D;
+	border:thin solid #175C7D;
+	width:100%;
+}
+
+.tabelaResultadoConsultaW {
+	text-align:center;
+	font-weight:normal;
+	font-family:Arial;
+	font-size:11px;
+	border:thin solid #175C7D;
+	background-color:white;
+}
+
+.tabelaResultadoConsultaB {
+	text-align:center;
+	font-weight:normal;
+	font-family:Arial;
+	font-size:11px;
+	border:thin solid #175C7D;
+	background-color:#EAF2F2;
+}
+
+.tabelaConteudoOpcoes {
+	text-align:center;
+	height:25%;
+}
+
+.opcaoBotao {
+	padding:6px;
+	border:0px;
+	cursor:hand;
+}
+
+.confirmacaoExclusao {
+	color:#FF0000;
+	font-weight:bold;
+	font-family:Arial;
+	font-size:11px;
+	vertical-align:center;
+	text-align:cener;
+	padding:3px;
+	padding-top:5px;
+}
+
+/* Padrões usados nos formulários administrativos */
+
+.tabelaFormAdmin {
+	width:60%;
+	padding:4em;
+	text-align:center;
+}
+
+.linhaFormAdminTituloPrincipal {
+	height:100px;
+}
+
+.tabelaFormAdminTituloPrincipal {
+	font-weight:bold; 
+	font-size:20px; 
+	color: #161616; 
+	font-style:normal; 
+	font-family:Arial; 
+	text-align:right; 
+	vertical-align:center;
+}
+
+.tabelaFormAdminTitulo {
+	font-weight:bold; 
+	font-size:11px;
+	color:black;
+	font-style:normal;
+	font-family:Arial;
+	background-color:#F5E080;
+	text-align:center;
+	border:thin solid grey; 
+}
+
+.formAdminTituloCampo {
+	color:black;
+	font-style:normal;
+	font-family:Arial; 
+	text-align:right; 
+	font-weight:bold; 
+	font-size:12px;
+	width:35%;
+}
+
+.formAdminCampoTexto {
+	text-align:left; 
+	vertical-align:bottom;
+}
+
+.tabelaFormOpcoes {	
+	text-align:center;
+	height:25%;
+}
+
+/* Padrões usados no resultado da busca */
+
+.tabelaResultadoBusca {
+	width:60%;
+	padding:4em;
+	text-align:center;
+}
+
+.linhaResultadoBuscaTituloPrincipal {
+	height:100px;
+}
+
+.tabelaResultadoBuscaTituloPrincipal {
+	font-weight:bold; 
+	font-size:20px; 
+	color: #161616; 
+	font-style:normal; 
+	font-family:Arial; 
+	text-align:right; 
+	vertical-align:center;
+}
+
+.tabelaResultadoBuscaTitulo {
+	font-weight:bold; 
+	font-size:11px;
+	color:black;
+	font-style:normal;
+	font-family:Arial;
+	background-color:#F5E080;
+	text-align:center;
+	border:thin solid grey; 
+}
+
+.listaResultado {
+	border-collapse:collapse;
+	padding:6px; 
+	width:100%;
+}
+
+.linhaResultadoB {
+	background-color:#EAF2F2;
+}
+
+.linhaResultadoW {
+	background-color:white;
+}
+
+.resultadoBuscaTituloCampo {
+	text-align:right; 
+	font-weight:bold; 
+	font-size:12px
+}
+
+.resultadoBuscaCampoTexto {
+	text-align:left; 
+	vertical-align:bottom;
+}
+
+.tabelaResultadoBuscaVazia {
+	text-align:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	height:50px;
+	color:#3F3F3F;
+}
+
+.buttonFechar {
+	position:absolute;
+	right:10px;
+	display:block;
+	width:15px;
+	height:15px;
+	cursor:pointer;
+	z-index: 99999999999;
+	top:10px;
+	[if IE] top:0px;
+}
+
+
+.headerIdentificao {
+	width:90%;
+	text-align:right;  
+	vertical-align:bottom; 
+	padding-right:8px; 
+	padding-bottom:8px;
+	font-size:10px; 
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFF;
+}

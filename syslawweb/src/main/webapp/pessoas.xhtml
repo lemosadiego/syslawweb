@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+<ui:composition template="/syslawtemplate.xhtml">
+	<ui:define name="content">
+	
+		
+
+		<h:form id="formPessoas">
+			
+			
+			<p:growl id="mensagem" showDetail="true" sticky="true" showSummary="false"/>
+			
+			<p:toolbar style="text-align:center;position:relative;">
+				<p:toolbarGroup align="center">
+					<p:commandButton value="#{msg['btn.novo']}"
+						icon="ui-icon-document"
+						actionListener="#{pessoaMB.novo}" />
+					<p:commandButton
+						value="#{msg['btn.alterar']}"
+						icon="ui-icon-pencil"
+						actionListener="#{pessoaMB.carregarItemSelecionado}"
+						update=":#{p:component('mensagem')}" />
+					<p:commandButton
+						value="#{msg['btn.excluir']}"
+						icon="ui-icon-trash"
+						actionListener="#{pessoaMB.excluir}"
+						update=":#{p:component('mensagem')}">
+						<p:confirm header=""
+							message="#{msg['lbl.gruposUsuarios.header.mensagem.exclusao']}"
+							icon="ui-icon-alert" />
+					</p:commandButton>
+				</p:toolbarGroup>
+			</p:toolbar>
+			
+			
+			<table>
+				<tr>
+					<td>
+							<h:panelGrid id="displayPessoa" columns="2">            
+						 			<h:outputText value="#{msg['lbl.pessoas.form.tipoPessoa']}" />  
+						            <p:selectOneMenu id="estado" effect="fold" value="#{pessoaMB.tipoPessoa}" filter="true" filterMatchMode="startsWith"  style="width:200px;" >
+											<f:selectItem itemValue="" itemLabel="Selecione" />
+											<f:selectItems	value="#{pessoaMB.listaTiposDePessoas}" />
+									</p:selectOneMenu>
+						
+						            <h:outputText value="#{msg['lbl.pessoas.form.nome']}" />  
+						            <h:inputText value="#{pessoaMB.nome}" id="nome" style="text-transform: uppercase;width:200px;" />
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.cpf']}" />  
+						            <h:inputText value="#{pessoaMB.cpf}" id="cpf" style="text-transform: uppercase;width:200px;" />
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.cnpj']}" />  
+						            <h:inputText value="#{pessoaMB.cnpj}" id="cnpj" style="text-transform: uppercase;width:200px;" />
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.oab']}" />  
+						            <h:inputText value="#{pessoaMB.oab}" id="oab" style="text-transform: uppercase;width:200px;" />
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.cep']}" />
+						            <h:inputText value="#{pessoaMB.cep}" id="cep" style="text-transform: uppercase;width:100px;" />
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.logradouro']}" />  
+						            <h:inputText value="#{pessoaMB.logradouro}" id="logradouro" style="text-transform: uppercase;width:200px;" />
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.bairro']}" />  
+						            <h:inputText value="#{pessoaMB.bairro}" id="bairro" style="text-transform: uppercase;width:200px;" />
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.cidade']}" />  
+						            <h:inputText value="#{pessoaMB.cidade}" id="cidade" style="text-transform: uppercase;width:200px;" />
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.estado']}" />  
+						            <p:selectOneMenu id="estado" effect="fold" value="#{pessoaMB.estado}" filter="true" filterMatchMode="startsWith">
+											<f:selectItem itemValue="" itemLabel="Selecione" />
+											<f:selectItems	value="#{pessoaMB.listaEstados}" />
+									</p:selectOneMenu>
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.telefoneComercial']}" />  
+						            <h:inputText value="#{pessoaMB.telefoneComercial}" id="telefoneComercial" style="text-transform: uppercase;width:200px;" />
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.telefoneResidencial']}" />  
+						            <h:inputText value="#{pessoaMB.telefoneResidencial}" id="telefoneResidencial" style="text-transform: uppercase;width:200px;" />
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.celular']}" />  
+						            <h:inputText value="#{pessoaMB.celular}" id="celular" style="text-transform: uppercase;width:200px;" />
+						            
+						            <h:outputText value="#{msg['lbl.pessoas.form.email']}" />  
+						            <h:inputText value="#{pessoaMB.celular}" id="celular" style="text-transform: uppercase;width:200px;" />
+						            
+						             <h:outputText value="#{msg['lbl.pessoas.form.codigoExterno']}" />  
+						            <h:inputText value="#{pessoaMB.codigoExterno}" id="codigoExterno" style="text-transform: uppercase;width:200px;" />
+						</h:panelGrid> 
+					</td>
+					<td>
+						 <p:fieldset legend="Busca" style="margin-bottom:20px">
+					        <h:panelGrid columns="1" cellpadding="5">		
+				         		<p:selectOneMenu id="comboBusca" effect="fold" value="#{pessoaMB.tipoBusca}" >
+										<f:selectItem itemValue="" itemLabel="Selecione" />
+										<f:selectItems	value="#{pessoaMB.listaTiposDeBusca}" />
+								</p:selectOneMenu>
+							    <h:inputText value="#{pessoaMB.nomeoBusca}" id="nomeBusca" style="text-transform: uppercase;width:120px;" />
+	
+								<p:dataTable id="listaPessoas" var="pessoa" value="#{pessoaMB.pessoaDataModel}"   
+							         selection="#{pessoaMB.pessoaEscolhida}" rowkey="#{pessoa.id}" selectionMode="single"  style="text-align:center;width:100px;position:relative;" >  
+							  
+							  		<p:ajax event="rowSelect" update=":#{p:component('formPessoas')}" listener="#{pessoaMB.selecionarLinha}"  />
+						  
+							        <p:column>  
+							        	<h:outputText value="#{pessoa.nome}"/>
+							        </p:column>  
+							  	</p:dataTable>
+					        </h:panelGrid>
+					    </p:fieldset>
+					</td>
+					
+				</tr>
+			</table>
+		
+		</h:form>
+		
+
+		
+</ui:define>
+</ui:composition>
+</html>
+
+
