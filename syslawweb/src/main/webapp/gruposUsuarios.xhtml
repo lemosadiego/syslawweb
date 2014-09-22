@@ -11,26 +11,25 @@
 <ui:composition template="/syslawtemplate.xhtml">
 	<ui:define name="content">
 	
-		<p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="PF('statusDialog').hide();"/>
-
-		<h:form id="formPrincipal">
+		<h:form id="formGrupoUsuario">
 		
 			<p:growl id="mensagem" showDetail="true" sticky="true" showSummary="false"/>
 			
 			<p:toolbar style="text-align:center;position:relative;">
 				<p:toolbarGroup align="center">
-					<p:commandButton value="#{msg['lbl.gruposUsuarios.novo']}"
+					<p:commandButton value="#{msg['btn.novo']}"
 						icon="ui-icon-document"
 						actionListener="#{grupoUsuarioMB.novo}" />
 					<p:commandButton
-						value="#{msg['lbl.gruposUsuarios.alterar']}"
+						value="#{msg['btn.alterar']}"
 						icon="ui-icon-pencil"
-						actionListener="#{grupoUsuarioMB.carregarItemSelecionado}" />
+						actionListener="#{grupoUsuarioMB.carregarItemSelecionado}"
+						update=":#{p:component('mensagem')}" />
 					<p:commandButton
-						value="#{msg['lbl.gruposUsuarios.excluir']}"
+						value="#{msg['btn.excluir']}"
 						icon="ui-icon-trash"
 						actionListener="#{grupoUsuarioMB.excluir}"
-						update="mensagem,listaGrupos">
+						update=":#{p:component('mensagem')},:#{p:component('listaGrupos')}">
 						<p:confirm header=""
 							message="#{msg['lbl.gruposUsuarios.header.mensagem.exclusao']}"
 							icon="ui-icon-alert" />
@@ -58,10 +57,10 @@
 					<p:growl id="mensagemAlteracao" showDetail="true" sticky="true" showSummary="false"/>
 			        <h:panelGrid id="displayAlteracao" columns="2">            
 			            <h:outputText value="#{msg['lbl.gruposUsuarios.form.descricao']}" />  
-			            <h:inputText value="#{grupoUsuarioMB.descricao}" id="nomeGrupoAlteracao"/>
+			            <h:inputText value="#{grupoUsuarioMB.descricao}" id="nomeGrupoAlteracao" style="text-transform: uppercase;" />
 			            
 			            
-			            <p:commandButton value="Salvar" icon="ui-icon-disk" actionListener="#{grupoUsuarioMB.alterar}" update=":#{p:component('formPrincipal')},:#{p:component('listaGrupos')}" />  
+			            <p:commandButton value="Salvar" icon="ui-icon-disk" actionListener="#{grupoUsuarioMB.alterar}" update=":#{p:component('mensagem')},:#{p:component('listaGrupos')}" />  
 			        	<h:outputLabel value=""/>
 			        </h:panelGrid> 
 			      </h:form>
@@ -74,7 +73,7 @@
 					<p:growl id="mensagemInclusao" showDetail="true" sticky="true" showSummary="false"/>
 			        <h:panelGrid id="displayInclusao" columns="2">            
 			            <h:outputText value="#{msg['lbl.gruposUsuarios.form.descricao']}" />  
-			            <h:inputText value="#{grupoUsuarioMB.descricao}" id="nomeGrupoInclusao"/>
+			            <h:inputText value="#{grupoUsuarioMB.descricao}" id="nomeGrupoInclusao" style="text-transform: uppercase;"/>
 			            
 			            <p:commandButton value="Salvar" icon="ui-icon-disk" actionListener="#{grupoUsuarioMB.incluir}" update=":#{p:component('mensagem')},:#{p:component('listaGrupos')}" />  
 			        	<h:outputLabel value=""/>

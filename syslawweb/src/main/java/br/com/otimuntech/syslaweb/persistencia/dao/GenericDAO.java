@@ -23,24 +23,53 @@ public class GenericDAO<T> {
 
 	public void incluir(T objeto) {
 		
-		Transaction transaction = getSession().beginTransaction();
+		Session session =  getSession();
+		Transaction transaction = session.beginTransaction();
 		
 		try{
-			getSession().save(objeto);
+			session.save(objeto);
 			transaction.commit();
 		}catch(HibernateException e){
 			LOG.error("Falha durante processo de inclusao. Mensagem :" + e.getMessage(), e);
 			transaction.rollback();
 			throw new HibernateException(e.getMessage());
+		}finally{
+			session.close();
 		}
 	}
 	
 	public void alterar(T objeto) {
-		getSession().update(objeto);
+		
+		Session session =  getSession();
+		Transaction transaction = session.beginTransaction();
+		
+		try{
+			session.save(objeto);
+			transaction.commit();
+		}catch(HibernateException e){
+			LOG.error("Falha durante processo de alteração. Mensagem :" + e.getMessage(), e);
+			transaction.rollback();
+			throw new HibernateException(e.getMessage());
+		}finally{
+			session.close();
+		}
 	}
 	
 	public void excluir(T objeto) {
-		getSession().delete(objeto);
+
+			Session session =  getSession();
+			Transaction transaction = session.beginTransaction();
+		try{			
+			session.delete(objeto);
+			transaction.commit();
+		}catch(HibernateException e){
+			LOG.error("Falha durante processo de alteração. Mensagem :" + e.getMessage(), e);
+			transaction.rollback();
+			throw new HibernateException(e.getMessage());
+		}finally{
+			session.close();
+		}
+		
 	}
 
 	public Session getSession() {	

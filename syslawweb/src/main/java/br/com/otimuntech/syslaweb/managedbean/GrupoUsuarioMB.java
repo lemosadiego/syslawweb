@@ -35,7 +35,7 @@ public class GrupoUsuarioMB {
 	public Long id;
 	public String descricao;
 
-	GrupoUsuario grupoUsuario;
+	GrupoUsuario grupoUsuarioDTO;
 
 	GrupoUsuario grupoEscolhido;
 
@@ -55,30 +55,17 @@ public class GrupoUsuarioMB {
 	}
 
 	public void carregarItemSelecionado(){
-		RequestContext.getCurrentInstance().execute("PF('grupoUsuarioDialogAlteracao').show();");
-	}
-
-	public void incluir(){
-
-		grupoUsuario = montarTO();
 		
-		if(isFormularioValido(grupoUsuario)){
-			
-			try {
-				if(!grupoUsuarioBO.isRegistroJaExiste(grupoUsuario)){
-					grupoUsuarioBO.incluir(grupoUsuario);
-					JSFUtil.exibirMensagem(FacesMessage.SEVERITY_INFO,Constantes.MSG_OPERACAO_REALIZADA_SUCESSO);
-				}else{
-					JSFUtil.exibirMensagem(FacesMessage.SEVERITY_WARN,"Atenção: Já existe um Grupo de Usuario com a mesma descrição na base dados");
-				}
-			} catch (GrupoUsuarioException e) {
-				JSFUtil.exibirMensagem(FacesMessage.SEVERITY_ERROR,"Falha ao incluir Grupo de Usuario [" + grupoUsuario.toString() + "]");
-				LOG.error("Falha ao incluir Grupo de Usuario [" + grupoUsuario.toString() + "]", e);
-			}
-			
+		if(grupoUsuarioDTO != null){
+			RequestContext.getCurrentInstance().execute("PF('grupoUsuarioDialogAlteracao').show();");
+		}else{
+			JSFUtil.exibirMensagem(FacesMessage.SEVERITY_WARN,"Atenção: É necessário selecionar um Grupo de Usuário para a alteração");
 		}
 		
 	}
+
+	
+	
 
 	private boolean isFormularioValido(GrupoUsuario grupoUsuario) {
 
@@ -99,12 +86,81 @@ public class GrupoUsuarioMB {
 		return grupoUsuario;
 	}
 
+	
+	/**
+	 * Metodo responsavel por incluir um Grupo de Usuario
+	 */
+	public void incluir(){
+
+		grupoUsuarioDTO = montarTO();
+		
+		if(isFormularioValido(grupoUsuarioDTO)){
+			
+			try {
+				if(!grupoUsuarioBO.isRegistroJaExiste(grupoUsuarioDTO)){
+					grupoUsuarioBO.incluir(grupoUsuarioDTO);
+					JSFUtil.exibirMensagem(FacesMessage.SEVERITY_INFO,Constantes.MSG_OPERACAO_REALIZADA_SUCESSO);
+					RequestContext.getCurrentInstance().execute("PF('grupoUsuarioDialogInclusao').hide();");
+				}else{
+					JSFUtil.exibirMensagem(FacesMessage.SEVERITY_WARN,"Atenção: Já existe um Grupo de Usuario com a mesma descrição na base dados");
+				}
+			} catch (GrupoUsuarioException e) {
+				JSFUtil.exibirMensagem(FacesMessage.SEVERITY_ERROR,"Falha ao incluir Grupo de Usuario [" + grupoUsuarioDTO.toString() + "]");
+				LOG.error("Falha ao incluir Grupo de Usuario [" + grupoUsuarioDTO.toString() + "]", e);
+			}finally{
+				limparCampos();
+			}
+		}
+		
+	}
+	
+	
+	/**
+	 * Metodo responsavel por alterar um Grupo de Usuario
+	 */
 	public void alterar(){
+		
+		grupoUsuarioDTO = montarTO();
+		
+		if(isFormularioValido(grupoUsuarioDTO)){
+			
+			try {
+				if(!grupoUsuarioBO.isRegistroJaExiste(grupoUsuarioDTO)){
+					grupoUsuarioBO.alterar(grupoUsuarioDTO);
+					JSFUtil.exibirMensagem(FacesMessage.SEVERITY_INFO,Constantes.MSG_OPERACAO_REALIZADA_SUCESSO);
+					consultarGrupos();
+					RequestContext.getCurrentInstance().execute("PF('grupoUsuarioDialogAlteracao').hide();");	
+				}else{
+					JSFUtil.exibirMensagem(FacesMessage.SEVERITY_WARN,"Atenção: Já existe um Grupo de Usuario com a mesma descrição na base dados");
+				}
+			} catch (GrupoUsuarioException e) {
+				JSFUtil.exibirMensagem(FacesMessage.SEVERITY_ERROR,"Falha ao alterar Grupo de Usuario [" + grupoUsuarioDTO.toString() + "]");
+				LOG.error("Falha ao alterar Grupo de Usuario [" + grupoUsuarioDTO.toString() + "]", e);
+			}finally{
+				limparCampos();
+			}
+			
+		}
 
 	}
 
 
 	public void excluir(){
+		
+		try {
+			if(grupoUsuarioDTO != null){
+						grupoUsuarioBO.excluir(grupoUsuarioDTO);
+						JSFUtil.exibirMensagem(FacesMessage.SEVERITY_INFO,Constantes.MSG_OPERACAO_REALIZADA_SUCESSO);
+						consultarGrupos();
+			}else{
+				JSFUtil.exibirMensagem(FacesMessage.SEVERITY_WARN,"Atenção: É necessário selecionar um Grupo de Usuário para a exclusão");
+			}
+		} catch (GrupoUsuarioException e) {
+			JSFUtil.exibirMensagem(FacesMessage.SEVERITY_ERROR,"Falha ao excluir Grupo de Usuario [" + grupoUsuarioDTO.toString() + "]");
+			LOG.error("Falha ao excluir Grupo de Usuario [" + grupoUsuarioDTO.toString() + "]", e);
+		}finally{
+			limparCampos();
+		}
 
 	}
 
@@ -112,15 +168,16 @@ public class GrupoUsuarioMB {
 	public void limparCampos(){
 		setId(null);
 		setDescricao(null);
+		setGrupoUsuarioDTO(null);
 	}
 	
 	/**
 	 * Metodo responsavel por obter a linha selecionado e atribuir ao objeto 
 	 */
 	public void selecionarLinha(SelectEvent event) {
-		setGrupoUsuario((GrupoUsuario) event.getObject());
-		setDescricao(grupoUsuario.getDescricao());
-		setId(grupoUsuario.getId());
+		setGrupoUsuarioDTO((GrupoUsuario) event.getObject());
+		setDescricao(grupoUsuarioDTO.getDescricao());
+		setId(grupoUsuarioDTO.getId());
 	}
 
 	/**
@@ -180,20 +237,18 @@ public class GrupoUsuarioMB {
 	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+
+	}
+	
+	
+
+
+	public GrupoUsuario getGrupoUsuarioDTO() {
+		return grupoUsuarioDTO;
 	}
 
-	/**
-	 * @return the grupoUsuario
-	 */
-	public GrupoUsuario getGrupoUsuario() {
-		return grupoUsuario;
-	}
-
-	/**
-	 * @param grupoUsuario the grupoUsuario to set
-	 */
-	public void setGrupoUsuario(GrupoUsuario grupoUsuario) {
-		this.grupoUsuario = grupoUsuario;
+	public void setGrupoUsuarioDTO(GrupoUsuario grupoUsuarioDTO) {
+		this.grupoUsuarioDTO = grupoUsuarioDTO;
 	}
 
 	/**

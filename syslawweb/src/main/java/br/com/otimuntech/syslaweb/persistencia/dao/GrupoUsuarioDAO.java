@@ -70,11 +70,11 @@ public class GrupoUsuarioDAO extends GenericDAO<GrupoUsuario> {
 		Session session = getSession();
 		Transaction transaction = session.beginTransaction();
 		try{
-			transaction.begin();
+			//transaction.begin();
 			Criteria criteria = session.createCriteria(GrupoUsuario.class);
-			criteria.add(Restrictions.eq("DESCRICAO",grupoUsuario.getDescricao()));
+			criteria.add(Restrictions.eq("descricao",grupoUsuario.getDescricao()));
 			transaction.commit();
-			return criteria.list().isEmpty();
+			return !criteria.list().isEmpty();
 		}catch(Exception e){
 			LOG.error("Falha ao consultar Grupo de Usuario pela Descricao [" + grupoUsuario.getDescricao() + "]", e);
 			transaction.rollback();
